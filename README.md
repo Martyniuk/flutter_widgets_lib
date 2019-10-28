@@ -1,4 +1,4 @@
-# Fluuter widget library
+# Flutter widget library
 
 The main aim is to play with different widgets in different manners in order to learn more about its usage.
 
