@@ -1,7 +1,8 @@
 // Core
 import 'package:flutter/material.dart';
 // Instruments
-import 'library.dart';
+import 'library/library.dart';
+import 'practice/layout/bankscreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,10 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Library'),
-        ),
-        body: Library(),
+        body: BankScreen(),
       ),
     );
   }
