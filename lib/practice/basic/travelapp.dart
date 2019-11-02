@@ -1,6 +1,5 @@
 // Core
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 var text =
     'Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo ';

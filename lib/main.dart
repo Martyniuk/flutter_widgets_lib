@@ -5,7 +5,8 @@ import 'library/library.dart';
 
 import 'practice/basic/bankscreen.dart';
 import 'practice/basic/lampshop.dart';
-import 'practice/layout/travelapp.dart';
+import 'practice/basic/travelapp.dart';
+import 'practice/basic/darkTravel.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TravelApp(),
+      home: DarkTravelApp(),
     );
   }
 }
