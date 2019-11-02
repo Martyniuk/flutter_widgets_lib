@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 // Instruments
 import 'library/library.dart';
-import 'practice/layout/bankscreen.dart';
-import 'practice/layout/lampshop.dart';
+import 'practice/basic/bankscreen.dart';
+import 'practice/basic/lampshop.dart';
 
 void main() => runApp(MyApp());
 
