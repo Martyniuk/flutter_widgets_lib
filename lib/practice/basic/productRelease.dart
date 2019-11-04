@@ -44,7 +44,31 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
+      bottomNavigationBar: BottomAppBar(
+        color: appBarColor,
+        shape: CircularNotchedRectangle(),
+        notchMargin: 12.0,
+        child: Container(
+          height: 50.0,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 42.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Icon(Icons.home, color: blueGradient1, size: 32.0),
+                Icon(Icons.shuffle, color: Colors.grey, size: 32.0),
+              ],
+            ),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
       body: ListView(
+        padding: EdgeInsets.symmetric(vertical: 0.0),
         children: <Widget>[
           Stack(
             children: <Widget>[
@@ -62,7 +86,10 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 10.0,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -79,12 +106,22 @@ class HomePage extends StatelessWidget {
                             letterSpacing: .5,
                           ),
                         ),
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(profileImage),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1.0,
+                              color: Colors.white,
+                            ),
+                            borderRadius: BorderRadius.circular(100.0),
+                          ),
+                          child: CircleAvatar(
+                            radius: 40.0,
+                            backgroundImage: NetworkImage(profileImage),
+                          ),
                         )
                       ],
                     ),
-                    SizedBox(height: 32.0),
+                    SizedBox(height: 16.0),
                     Text(
                       'Trending',
                       style: TextStyle(
@@ -94,87 +131,280 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 16.0),
-                    Container(
-                      height: 200.0,
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 1.0, color: Colors.red),
+                    TrendingSection(),
+                    SizedBox(height: 16.0),
+                    Text(
+                      'Featured',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24.0,
                       ),
+                    ),
+                    SizedBox(height: 15.0),
+                    Container(
+                      height: 120.0,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: <Widget>[
-                          Container(
-                            width: 160.0,
-                            decoration: BoxDecoration(
-                              color: Color.fromRGBO(19, 53, 97, 0.7),
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 15.0),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Image(
-                                    width: 80.0,
-                                    image: NetworkImage(slack),
-                                  ),
-                                  Text(
-                                    'Slack',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 22.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Business',
-                                    style: TextStyle(
-                                      color: Colors.white54,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 25.0,
-                                    width: 90.0,
-                                    decoration: BoxDecoration(
-                                      color: Color.fromRGBO(21, 51, 99, 1.0),
-                                      borderRadius: BorderRadius.circular(5.0),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.arrow_drop_up,
-                                          color:
-                                              Color.fromRGBO(62, 215, 176, 1.0),
-                                        ),
-                                        Text(
-                                          '1350',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          FeaturedItem(
+                            'Productivity',
+                            '102',
+                            pinkGradient1,
+                            pinkGradient2,
+                          ),
+                          FeaturedItem(
+                            'Other stuff',
+                            '43',
+                            blueGradient1,
+                            blueGradient2,
+                          ),
+                          FeaturedItem(
+                            'Efficiency',
+                            '54',
+                            pinkGradient1,
+                            pinkGradient2,
                           ),
                         ],
                       ),
                     ),
+                    SizedBox(height: 16.0),
+                    Text(
+                      'Recent Blogs',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24.0,
+                      ),
+                    ),
+                    SizedBox(height: 16.0),
+                    Card(
+                      color: Color.fromRGBO(12, 35, 73, 1.0),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0,
+                          vertical: 12.0,
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            RecentBlogsItem(),
+                            RecentBlogsItem(),
+                            RecentBlogsItem(),
+                            RecentBlogsItem(),
+                            RecentBlogsItem()
+                          ],
+                        ),
+                      ),
+                    )
                   ],
                 ),
               )
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class RecentBlogsItem extends StatelessWidget {
+  const RecentBlogsItem();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          CircleAvatar(
+            radius: 30.0,
+            backgroundImage: NetworkImage(profileImage2),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Top 10 Productive Apps',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                ),
+              ),
+              SizedBox(height: 5.0),
+              Text(
+                'Alexandr Miroshnichenko',
+                style: TextStyle(
+                  color: Colors.white54,
+                  fontSize: 16.0,
+                ),
+              )
+            ],
+          ),
+          Text(
+            '3 hr ago',
+            style: TextStyle(color: Colors.white54),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class FeaturedItem extends StatelessWidget {
+  final title;
+  final quantity;
+  final colorBegin;
+  final colorEnd;
+
+  const FeaturedItem(this.title, this.quantity, this.colorBegin, this.colorEnd);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300.0,
+      margin: EdgeInsets.only(right: 20.0),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          end: Alignment.topRight,
+          begin: Alignment.bottomLeft,
+          colors: [colorBegin, colorEnd],
+        ),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            title,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 26.0,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          SizedBox(height: 5.0),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12.0,
+                vertical: 5.0,
+              ),
+              child: Text(
+                '$quantity Products',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TrendingSection extends StatelessWidget {
+  const TrendingSection({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 220.0,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          TrendingCard(slack, 'Slack', 'Business', '1350'),
+          TrendingCard(sketch, 'Sketch', 'Design', '1190'),
+          TrendingCard(photoshop, 'Photoshop', 'Design', '1050'),
+        ],
+      ),
+    );
+  }
+}
+
+class TrendingCard extends StatelessWidget {
+  final productImage;
+  final productName;
+  final productMission;
+  final productRate;
+
+  const TrendingCard(this.productImage, this.productName, this.productMission,
+      this.productRate);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 160.0,
+      margin: EdgeInsets.only(right: 15.0),
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(19, 53, 97, 0.7),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 25.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Image(
+              width: 80.0,
+              image: NetworkImage(productImage),
+            ),
+            SizedBox(height: 10.0),
+            Column(
+              children: <Widget>[
+                Text(
+                  productName,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Text(
+                  productMission,
+                  style: TextStyle(
+                    color: Colors.white54,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10.0),
+            Container(
+              height: 25.0,
+              width: 100.0,
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(21, 51, 99, 1.0),
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(
+                    Icons.arrow_drop_up,
+                    color: Color.fromRGBO(62, 215, 176, 1.0),
+                  ),
+                  Text(
+                    productRate,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
