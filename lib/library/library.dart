@@ -7,6 +7,7 @@ import 'widgets/column.dart';
 import 'widgets/text_field.dart';
 import 'widgets/expanded.dart';
 import 'widgets/flexible.dart';
+import 'widgets/navigation/navigator_simple.dart';
 
 class Library extends StatefulWidget {
   @override
@@ -16,13 +17,14 @@ class Library extends StatefulWidget {
 class _LibraryState extends State<Library> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        // child: TextFieldCustom(),
-        // child: ExpandedCustom(),
-        // child: FlexibleCustom(),
-        child: ContainerCustom(),
-      ),
-    );
+    return NavigatorSimple();
+    // return Container(
+    //   child: Center(
+    //     // child: TextFieldCustom(),
+    //     // child: ExpandedCustom(),
+    //     // child: FlexibleCustom(),
+    //     child: ContainerCustom(),
+    //   ),
+    // );
   }
 }
