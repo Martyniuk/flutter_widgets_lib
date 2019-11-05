@@ -8,6 +8,8 @@ import 'widgets/text_field.dart';
 import 'widgets/expanded.dart';
 import 'widgets/flexible.dart';
 import 'widgets/navigation/navigator_simple.dart';
+import 'widgets/center.dart';
+import 'widgets/card.dart';
 
 class Library extends StatefulWidget {
   @override
@@ -17,7 +19,14 @@ class Library extends StatefulWidget {
 class _LibraryState extends State<Library> {
   @override
   Widget build(BuildContext context) {
-    return NavigatorSimple();
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Library'),
+        ),
+        body: CardCustom(),
+      ),
+    );
     // return Container(
     //   child: Center(
     //     // child: TextFieldCustom(),

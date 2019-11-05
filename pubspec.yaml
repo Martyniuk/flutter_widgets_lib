@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  flutter_material_showcase: ^1.0.0
   intl: ^0.15.8
   clippy_flutter: ^1.0.0
   carousel_slider: ^1.3.0

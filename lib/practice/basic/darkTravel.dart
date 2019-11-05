@@ -188,187 +188,190 @@ class _DarkTravelAppState extends State<DarkTravelApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xff1e1359),
-      body: SafeArea(
-        child: ListView(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Travel',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 20.0),
-                  TextField(
-                    autocorrect: false,
-                    style: TextStyle(
-                      color: Colors.white54,
-                      backgroundColor: Color(0xFF382f6e),
-                    ),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(top: 15.0),
-                      filled: true,
-                      prefixIcon: Icon(Icons.search, color: Colors.white54),
-                      fillColor: Colors.white12,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Color(0xff1e1359),
+        body: SafeArea(
+          child: ListView(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Travel',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
                       ),
-                      hintText: 'Search Desctination',
-                      hintStyle: TextStyle(color: Colors.white54),
                     ),
-                  ),
-                  SizedBox(height: 16.0),
-                  Container(
-                    height: 45.0,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: <Widget>[
-                        CountryItem('Italy', gradient1),
-                        CountryItem('Rome', gradient2),
-                        CountryItem('French', gradient3),
-                      ],
+                    SizedBox(height: 20.0),
+                    TextField(
+                      autocorrect: false,
+                      style: TextStyle(
+                        color: Colors.white54,
+                        backgroundColor: Color(0xFF382f6e),
+                      ),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(top: 15.0),
+                        filled: true,
+                        prefixIcon: Icon(Icons.search, color: Colors.white54),
+                        fillColor: Colors.white12,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        hintText: 'Search Desctination',
+                        hintStyle: TextStyle(color: Colors.white54),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 16.0),
-                  Text(
-                    'Destination',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
+                    SizedBox(height: 16.0),
+                    Container(
+                      height: 45.0,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          CountryItem('Italy', gradient1),
+                          CountryItem('Rome', gradient2),
+                          CountryItem('French', gradient3),
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 16.0),
-                  CarouselSlider(
-                    onPageChanged: (int index) {
-                      setState(() {
-                        currentPlace = places[index];
-                      });
-                    },
-                    height: 160.0,
-                    items: places.map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 150.0,
-                            margin: EdgeInsets.symmetric(horizontal: 5.0),
-                            child: Container(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child:
-                                    Image.network(i['image'], fit: BoxFit.fill),
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    }).toList(),
-                    enableInfiniteScroll: true,
-                    enlargeCenterPage: true,
-                    viewportFraction: 0.90,
-                  ),
-                  SizedBox(height: 16.0),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: _renderCountryInfo(),
-                  ),
-                  SizedBox(height: 25.0),
-                  Text(
-                    'Popular Tour',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
+                    SizedBox(height: 16.0),
+                    Text(
+                      'Destination',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 25.0),
-                  CarouselSlider(
-                    height: 120.0,
-                    items: places.map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Container(
-                            width: MediaQuery.of(context).size.width,
-                            margin: EdgeInsets.symmetric(horizontal: 5.0),
-                            child: Stack(
-                              fit: StackFit.expand,
-                              children: <Widget>[
-                                ClipRRect(
+                    SizedBox(height: 16.0),
+                    CarouselSlider(
+                      onPageChanged: (int index) {
+                        setState(() {
+                          currentPlace = places[index];
+                        });
+                      },
+                      height: 160.0,
+                      items: places.map((i) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 150.0,
+                              margin: EdgeInsets.symmetric(horizontal: 5.0),
+                              child: Container(
+                                child: ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.network(
-                                    i['image'],
-                                    fit: BoxFit.cover,
-                                  ),
+                                  child: Image.network(i['image'],
+                                      fit: BoxFit.fill),
                                 ),
-                                Container(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text(
-                                        '${i['name']} Tour',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 18.0,
-                                            fontWeight: FontWeight.bold,
-                                            letterSpacing: .7),
-                                      ),
-                                      SizedBox(height: 10.0),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Text(
-                                            '${i['currency']}',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          SizedBox(width: 5.0),
-                                          Text(
-                                            '|',
-                                            style: TextStyle(
-                                              color: Colors.white70,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                          SizedBox(width: 5.0),
-                                          Text(
-                                            '${i['duration']} Days',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          )
-                                        ],
-                                      )
-                                    ],
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
+                      enableInfiniteScroll: true,
+                      enlargeCenterPage: true,
+                      viewportFraction: 0.90,
+                    ),
+                    SizedBox(height: 16.0),
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: _renderCountryInfo(),
+                    ),
+                    SizedBox(height: 25.0),
+                    Text(
+                      'Popular Tour',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 25.0),
+                    CarouselSlider(
+                      height: 120.0,
+                      items: places.map((i) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.symmetric(horizontal: 5.0),
+                              child: Stack(
+                                fit: StackFit.expand,
+                                children: <Widget>[
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.network(
+                                      i['image'],
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    }).toList(),
-                    enableInfiniteScroll: true,
-                    viewportFraction: 0.6,
-                  ),
-                ],
+                                  Container(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          '${i['name']} Tour',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18.0,
+                                              fontWeight: FontWeight.bold,
+                                              letterSpacing: .7),
+                                        ),
+                                        SizedBox(height: 10.0),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Text(
+                                              '${i['currency']}',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(width: 5.0),
+                                            Text(
+                                              '|',
+                                              style: TextStyle(
+                                                color: Colors.white70,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            SizedBox(width: 5.0),
+                                            Text(
+                                              '${i['duration']} Days',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
+                      enableInfiniteScroll: true,
+                      viewportFraction: 0.6,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
