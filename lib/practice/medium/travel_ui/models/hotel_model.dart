@@ -29,6 +29,6 @@ final List<Hotel> hotels = [
     imageUrl: 'assets/images/middle_travel_ui/hotel2.jpg',
     name: 'Hotel 2',
     address: '404 Great St',
-    price: 'dohuя',
+    price: 360,
   ),
 ];

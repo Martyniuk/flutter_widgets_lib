@@ -227,7 +227,8 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                           Text(
                                             'per pax',
                                             style: TextStyle(
-                                                color: Colors.black54),
+                                              color: Colors.black54,
+                                            ),
                                           ),
                                         ],
                                       ),

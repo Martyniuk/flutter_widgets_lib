@@ -106,22 +106,23 @@ class _HomeScreenState extends State<HomeScreen> {
             title: SizedBox.shrink(),
           ),
           BottomNavigationBarItem(
-              icon: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: _currentTab == 2 ? 1.0 : 0.0,
-                    color: _currentTab == 2
-                        ? Theme.of(context).primaryColor
-                        : Colors.white,
-                  ),
-                  borderRadius: BorderRadius.circular(10.0),
+            icon: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: _currentTab == 2 ? 1.0 : 0.0,
+                  color: _currentTab == 2
+                      ? Theme.of(context).primaryColor
+                      : Colors.white,
                 ),
-                child: CircleAvatar(
-                  radius: 15.0,
-                  backgroundImage: NetworkImage(profileImage),
-                ),
+                borderRadius: BorderRadius.circular(10.0),
               ),
-              title: SizedBox.shrink()),
+              child: CircleAvatar(
+                radius: 15.0,
+                backgroundImage: NetworkImage(profileImage),
+              ),
+            ),
+            title: SizedBox.shrink(),
+          ),
         ],
       ),
     );
