@@ -24,7 +24,7 @@ class Page1 extends StatelessWidget {
           var navigationResult = await Navigator.push(
               context, MaterialPageRoute(builder: (context) => Page2()));
 
-          debugPrint('<---- ${navigationResult}');
+          debugPrint('<---- $navigationResult');
         },
         child: Text('1'),
       ),
