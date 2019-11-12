@@ -21,10 +21,40 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return TravelUIApp();
-    // return MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   home: DarkTravelApp(),
-    // );
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Title'),
+        ),
+        body: Text('Hello'),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text('Drawer Header'),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+              ),
+              ListTile(
+                title: Text('Item 1'),
+                onTap: () {
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
+              ListTile(
+                title: Text('Item 2'),
+                onTap: () {
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
