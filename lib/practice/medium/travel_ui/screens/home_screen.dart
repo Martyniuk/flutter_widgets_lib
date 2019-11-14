@@ -64,13 +64,23 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.symmetric(vertical: 30.0),
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 120.0),
-              child: Text(
-                'What would you like to find?',
-                style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                ),
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'What would you like to find?',
+                    style: TextStyle(
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.arrow_back_ios),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 20.0),

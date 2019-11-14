@@ -43,10 +43,7 @@ var profileImage =
 class Travel2App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
-    );
+    return HomeScreen();
   }
 }
 
@@ -626,7 +623,7 @@ class SecondScreen extends StatelessWidget {
                           size: 24.0,
                         ),
                         onPressed: () {
-                          Navigator.pop(context);
+                          Navigator.of(context).pop();
                         },
                       ),
                       RichText(
