@@ -16,7 +16,8 @@ import 'package:flutter/material.dart';
 import 'practice/basic/onboarding_screens.dart';
 
 // Advanced layouts
-import 'practice/medium/travel_ui/travel_ui.dart';
+// import 'practice/medium/travel_ui/travel_ui.dart';
+import 'practice/medium/save_animals/save_animals.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OnboardingScreens(),
+      home: SaveAnimals(),
     );
   }
 }
