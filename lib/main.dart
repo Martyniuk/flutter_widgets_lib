@@ -13,7 +13,8 @@ import 'package:flutter/material.dart';
 // import 'practice/basic/restaurant.dart';
 // import 'practice/basic/travelApp2.dart';
 // import 'practice/basic/story_app.dart';
-import 'practice/basic/onboarding_screens.dart';
+//import 'practice/basic/onboarding_screens.dart';
+import 'practice/basic/bicycle_app.dart';
 
 // Advanced layouts
 // import 'practice/medium/travel_ui/travel_ui.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SaveAnimals(),
+      home: BicycleApp(),
     );
   }
 }
