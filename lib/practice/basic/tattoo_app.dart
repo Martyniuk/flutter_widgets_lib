@@ -118,7 +118,7 @@ class OnboardingButton extends StatelessWidget {
       clipper: OnboardingButtonClipper(),
       child: Container(
         width: 135,
-        height: 155,
+        height: 175,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -146,12 +146,18 @@ class OnboardingButtonClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
-    // path.lineTo(size.width, size.width / 3);
-    path.quadraticBezierTo(
-        size.height, size.width - 110, size.height / 2, size.height - 48);
-    // path.lineTo(75, 0);
+    path.moveTo(size.width, size.height);
 
-    // return path;
+    path.lineTo(40, size.height / 2 + 30);
+
+    var controlP1 = Offset(5, size.height / 2);
+    var endP1 = Offset(40, size.height / 2 - 30);
+
+    path.quadraticBezierTo(controlP1.dx, controlP1.dy, endP1.dx, endP1.dy);
+
+    path.lineTo(size.width, 0);
+
+    return path;
   }
 
   @override
