@@ -145,6 +145,16 @@ class _StoryAppState extends State<StoryApp> {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      size: 30.0,
+                      color: Colors.white,
+                    ),
+                  ),
                 ],
               ),
             ),

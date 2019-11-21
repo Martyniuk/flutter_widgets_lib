@@ -138,6 +138,16 @@ class BicycleApp extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
+                        IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            size: 30.0,
+                            color: Colors.grey,
+                          ),
+                        ),
                         Icon(
                           Icons.arrow_forward,
                           size: 42.0,

@@ -16,6 +16,16 @@ class SaveAnimals extends StatelessWidget {
             padding: const EdgeInsets.only(right: 12.0),
             child: Icon(Icons.security),
           ),
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              size: 30.0,
+              color: Colors.white,
+            ),
+          ),
         ],
       ),
       body: Stack(
