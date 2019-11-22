@@ -15,11 +15,11 @@ import 'practice/basic/travelApp2.dart';
 import 'practice/basic/story_app.dart';
 import 'practice/basic/onboarding_screens.dart';
 import 'practice/basic/bicycle_app.dart';
-import 'practice/basic/tattoo_app.dart';
 
 // Advanced layouts
 import 'practice/medium/travel_ui/travel_ui.dart';
 import 'practice/medium/save_animals/save_animals.dart';
+import 'practice/medium/tattoo/tattoo_app.dart';
 
 void main() => runApp(MyApp());
 
@@ -247,35 +247,8 @@ class PathPainter extends CustomPainter {
       ..strokeWidth = 5.0;
 
     Path path = Path();
-    // width: 130,
-    // height: 160,
-    /* - 1
 
     path.moveTo(size.width, size.height);
-    path.quadraticBezierTo(0, size.width, 0, size.height / 2);
-    path.lineTo(0, size.height / 2 - 10);
-    path.quadraticBezierTo(size.height / 3, 0, size.width, 0);
-
-    // path.lineTo(size.width - 120, size.height / 2 + 10);
-
-    // path.lineTo(size.width - 120, size.height / 2 - 10);
-    
-    canvas.drawPath(path, paint);
-
-    */
-
-    // - 2
-    // size  --> Size(128.0, 158.0)
-    path.moveTo(size.width, size.height);
-    // path.lineTo(size.width / 2, size.height);
-    // path.lineTo(size.width / 2, size.height);
-    // path.quadraticBezierTo(0, size.width - 10, 10, size.height / 2 - 10);
-
-    // path.quadraticBezierTo(14, size.height / 2 - 45, size.width, 0);
-
-    // canvas.drawPath(path, paint);
-
-    // - 3
 
     path.lineTo(40, size.height / 2 + 30);
 
