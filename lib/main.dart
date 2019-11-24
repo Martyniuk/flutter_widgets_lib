@@ -275,41 +275,15 @@ class PathPainter_2 extends CustomPainter {
       ..strokeWidth = 5.0;
 
     Path path = Path();
-    // width: 130,
-    // height: 160,
-
-    // path.moveTo(size.width, size.height);
-    // path.lineTo(0, 160);
-    // path.lineTo(0, 0);
-    // path.lineTo(size.width, 0);
-    // path.lineTo(size.width, size.height);
-
-    // path.quadraticBezierTo(0, size.width, 0, size.height / 2);
-    // path.lineTo(0, size.height / 2 - 10);
-    // path.quadraticBezierTo(size.height / 3, 0, size.width, 0);
-
-    // path.lineTo(size.width - 120, size.height / 2 + 10);
-
-    // path.lineTo(size.width - 120, size.height / 2 - 10);
     path.lineTo(0.0, size.height - 20);
 
-    // offset(120 / 4 = 30, 160 - 30 = 130)
-    // original = offset(120/4=30, 160);
     var firstControlPoint = Offset(30.0, size.height);
-    // var firstControlPoint = Offset(size.width / 4, size.height);
-    // offset(120 / 2 = 60, 160 / 2 = 80)
-    // original - offset(120/2.25 = 54, 160 - 30 = 130);
-    // var firstEndPoint = Offset(60.0, 80.0);
     var firstEndPoint = Offset(size.width / 2.25, size.height - 30.0);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 
-    // offset(120 - 30 = 90.0, 160 / 2 = 80.0);
-    // original = offset(120 - 120/3.25=83, 160 - 65 - 95);
     var secondControlPoint =
         Offset(size.width - (size.width / 3.25), size.height - 65);
-    // offset(120 = 120, 160 / 2 = 80)
-    // original - offset(120 = 120, 160 - 40 = 120);
     var secondEndPoint = Offset(size.width, size.height - 40.0);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
         secondEndPoint.dx, secondEndPoint.dy);
