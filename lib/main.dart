@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 // Advanced layouts
 // import 'practice/medium/travel_ui/travel_ui.dart';
 import 'practice/medium/save_animals/save_animals.dart';
+import 'practice/basic/adidas_app.dart';
 // import 'practice/medium/tattoo/tattoo_app.dart';
 
 void main() => runApp(MyApp());
@@ -90,6 +91,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => SaveAnimals(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Adidas'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AdidasApp(),
                   ),
                 );
               },
