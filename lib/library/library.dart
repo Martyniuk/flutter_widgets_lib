@@ -46,13 +46,20 @@ class _LibraryState extends State<Library> {
           itemBuilder: (BuildContext context, int index) {
             Widget customWidget = data[index];
 
-            return Column(
-              children: <Widget>[
-                customWidget,
-                Divider(
-                  color: Colors.red,
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                elevation: 30.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20.0),
+                  ),
                 ),
-              ],
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: customWidget,
+                ),
+              ),
             );
           },
         ),
