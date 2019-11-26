@@ -23,27 +23,44 @@ class Expanded extends Flexible {
 class ExpandedState extends State<ExpandedCustom> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Expanded(
-          // flex: 2,
-          child: Container(
-            width: 100.0,
-            color: Colors.blue,
+    return Center(
+      child: Container(
+        height: 600.0,
+        width: 400.0,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.black,
+            width: 2.0,
           ),
         ),
-        Expanded(
-          child: Container(
-            width: 200.0,
-            color: Colors.amber,
-          ),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Text('Expanded Playground'),
+            ),
+            Divider(color: Colors.black),
+            Expanded(
+              // flex: 2,
+              child: Container(
+                width: 100.0,
+                color: Colors.blue,
+              ),
+            ),
+            Expanded(
+              child: Container(
+                width: 200.0,
+                color: Colors.amber,
+              ),
+            ),
+            Container(
+              width: 100.0,
+              height: 400.0,
+              color: Colors.blue,
+            ),
+          ],
         ),
-        Container(
-          width: 100.0,
-          height: 400.0,
-          color: Colors.blue,
-        ),
-      ],
+      ),
     );
   }
 }

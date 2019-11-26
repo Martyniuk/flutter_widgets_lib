@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Library of widgets I play with
-// import 'library/library.dart';
+import 'library/library.dart';
 // Basic dummy layouts
 // import 'practice/basic/bankscreen.dart';
 // import 'practice/basic/lampshop.dart';
@@ -65,12 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               title: Text('Library'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SaveAnimals(),
-                  ),
-                );
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Library()));
               },
             ),
             ListTile(
@@ -120,6 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
+            Text('Some example of Path drawing'),
             Container(
               width: 130,
               height: 160,

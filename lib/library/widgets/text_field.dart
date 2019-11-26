@@ -36,144 +36,151 @@ class _TextFieldState extends State<TextFieldCustom> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'onChange',
-                    ),
-                    onChanged: (str) {
-                      setState(() {
-                        _value = str;
-                      });
-                    },
-                  ),
-                ),
-                Divider(
-                  color: Colors.red,
-                ),
-                Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.green[400]),
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10.0,
-                            horizontal: 5.0,
-                          ),
-                          child: Text('result -->'),
-                        ),
-                        Text(_value),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'onSubmitted',
-                    ),
-                    onSubmitted: (str) {
-                      setState(() {
-                        _value1 = str;
-                      });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.green[400]),
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10.0,
-                            horizontal: 5.0,
-                          ),
-                          child: Text('result -->'),
-                        ),
-                        Text(_value1),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: TextField(
-                    onTap: () {
-                      print('onTap');
-                    },
-                    autocorrect: false,
-                    autofocus: false,
-                    textAlign: TextAlign.center,
-                    dragStartBehavior: DragStartBehavior.start,
-                    enabled: true,
-                    enableInteractiveSelection: false,
-                    buildCounter: (BuildContext context,
-                            {int currentLength,
-                            int maxLength,
-                            bool isFocused}) =>
-                        null,
-                    textInputAction: TextInputAction.go,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.print),
-                      border: OutlineInputBorder(),
-                      hintText: 'Wo ty suka',
-                      helperText: 'potrewim?',
-                      labelText: 'Controller',
-                    ),
-                    controller: controller,
-                    style: TextStyle(color: Colors.blue[300]),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.green[400]),
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10.0,
-                            horizontal: 5.0,
-                          ),
-                          child: Text('controller implementation -->'),
-                        ),
-                        Text(_value2),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
+      height: MediaQuery.of(context).size.height,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 4.0,
+          color: Colors.red,
         ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Text('TextField playground'),
+          Divider(
+            color: Colors.black,
+            thickness: 3.0,
+          ),
+          Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'onChange',
+                  ),
+                  onChanged: (str) {
+                    setState(() {
+                      _value = str;
+                    });
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.green[400]),
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10.0,
+                          horizontal: 5.0,
+                        ),
+                        child: Text('result -->'),
+                      ),
+                      Text(_value),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Divider(),
+          Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'onSubmitted',
+                  ),
+                  onSubmitted: (str) {
+                    setState(() {
+                      _value1 = str;
+                    });
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.green[400]),
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10.0,
+                          horizontal: 5.0,
+                        ),
+                        child: Text('result -->'),
+                      ),
+                      Text(_value1),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Divider(),
+          Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: TextField(
+                  onTap: () {
+                    print('onTap');
+                  },
+                  autocorrect: false,
+                  autofocus: false,
+                  textAlign: TextAlign.center,
+                  dragStartBehavior: DragStartBehavior.start,
+                  enabled: true,
+                  enableInteractiveSelection: false,
+                  buildCounter: (BuildContext context,
+                          {int currentLength, int maxLength, bool isFocused}) =>
+                      null,
+                  textInputAction: TextInputAction.go,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.print),
+                    border: OutlineInputBorder(),
+                    hintText: 'Wo ty tam',
+                    helperText: 'potrewim?',
+                    labelText: 'Controller',
+                  ),
+                  controller: controller,
+                  style: TextStyle(color: Colors.blue[300]),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.green[400]),
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10.0,
+                          horizontal: 5.0,
+                        ),
+                        child: Text('controller implementation -->'),
+                      ),
+                      Text(_value2),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

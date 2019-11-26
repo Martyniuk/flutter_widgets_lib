@@ -18,29 +18,43 @@ class FlexibleCustom extends StatefulWidget {
 class FlexibleCustomState extends State<FlexibleCustom> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Flexible(
-          flex: 1,
-          child: Container(
-            width: 100.0,
-            color: Colors.blue,
-          ),
+    return Center(
+      child: Container(
+        height: 500.0,
+        width: 350.0,
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black, width: 1.0),
         ),
-        Flexible(
-          fit: FlexFit.loose,
-          flex: 2,
-          child: Container(
-            width: 200.0,
-            color: Colors.grey,
-          ),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text('Flexible playfround'),
+            ),
+            Divider(color: Colors.black),
+            Flexible(
+              flex: 1,
+              child: Container(
+                width: 100.0,
+                color: Colors.blue,
+              ),
+            ),
+            Flexible(
+              fit: FlexFit.loose,
+              flex: 2,
+              child: Container(
+                width: 200.0,
+                color: Colors.grey,
+              ),
+            ),
+            Container(
+              width: 100.0,
+              height: 400.0,
+              color: Colors.blue,
+            ),
+          ],
         ),
-        Container(
-          width: 100.0,
-          height: 400.0,
-          color: Colors.blue,
-        ),
-      ],
+      ),
     );
   }
 }
