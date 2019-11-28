@@ -20,6 +20,7 @@ import 'library/library.dart';
 // import 'practice/medium/travel_ui/travel_ui.dart';
 import 'practice/medium/save_animals/save_animals.dart';
 import 'practice/basic/adidas_app.dart';
+import 'cources/zaiste_flutter_in_practice/zaiste_main.dart';
 // import 'practice/medium/tattoo/tattoo_app.dart';
 
 void main() => runApp(MyApp());
@@ -98,6 +99,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => AdidasApp(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Course - Zaiste'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ZaisteApp(),
                   ),
                 );
               },

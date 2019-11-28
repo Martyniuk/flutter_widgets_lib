@@ -1,0 +1,30 @@
+[
+  {
+    "subject": "My first message",
+    "body": "Subtitle with some text in subtitle so long long long long long long long long long long long long long long long long long long long long long long long long time ago!"
+  },
+  {
+    "subject": "My second message",
+    "body": "Some message in body and other info you need to read about"
+  },
+  {
+    "subject": "My third message",
+    "body": "Some message in body and other info you need to read about"
+  },
+  {
+    "subject": "My fourth message",
+    "body": "Some message in body and other info you need to read about"
+  },
+  {
+    "subject": "My fourth message",
+    "body": "Some message in body and other info you need to read about"
+  },
+  {
+    "subject": "Another entry from json",
+    "body": "Some message in body and other info you need to read about"
+  },
+  {
+    "subject": "One more entry from json",
+    "body": "Some message in body and other info you need to read about"
+  }
+]

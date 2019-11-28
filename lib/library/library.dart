@@ -6,9 +6,11 @@ import 'widgets/container.dart';
 import 'widgets/text_field.dart';
 import 'widgets/expanded.dart';
 import 'widgets/flexible.dart';
-import 'widgets/navigation/navigator_simple.dart';
+// import 'widgets/navigation/navigator_simple.dart';
 import 'widgets/center.dart';
 import 'widgets/card.dart';
+import 'widgets/flat_button.dart';
+import 'widgets/list_tile.dart';
 
 var data = [
   ContainerCustom(),
@@ -16,7 +18,9 @@ var data = [
   ExpandedCustom(),
   FlexibleCustom(),
   CenterCustom(),
-  CardCustom()
+  CardCustom(),
+  FlatButtonCustom(),
+  ListTileCustom()
 ];
 
 class Library extends StatefulWidget {
