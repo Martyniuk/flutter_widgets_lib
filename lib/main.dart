@@ -1,5 +1,6 @@
 // Core
 import 'package:flutter/material.dart';
+import 'package:widgetlibrary/practice/basic/onboarding_screens2.dart';
 
 // Library of widgets I play with
 import 'library/library.dart';
@@ -13,7 +14,8 @@ import 'library/library.dart';
 // import 'practice/basic/restaurant.dart';
 // import 'practice/basic/travelApp2.dart';
 // import 'practice/basic/story_app.dart';
-// import 'practice/basic/onboarding_screens.dart';
+import 'practice/basic/onboarding_screens.dart';
+// import 'practice/basic/onboarding_screens2.dart';
 // import 'practice/basic/bicycle_app.dart';
 
 // Advanced layouts
@@ -76,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SaveAnimals(),
+                    builder: (context) => OnboardingScreens2App(),
                   ),
                 );
               },
