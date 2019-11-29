@@ -14,7 +14,8 @@ import 'library/library.dart';
 // import 'practice/basic/restaurant.dart';
 // import 'practice/basic/travelApp2.dart';
 // import 'practice/basic/story_app.dart';
-import 'practice/basic/onboarding_screens.dart';
+// import 'practice/basic/onboarding_screens.dart';
+import 'practice/basic/login_app.dart';
 // import 'practice/basic/onboarding_screens2.dart';
 // import 'practice/basic/bicycle_app.dart';
 
@@ -74,11 +75,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ListTile(
               title: Text('Basic'),
+              // TODO: should be a screen with all apps from basic folder
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => OnboardingScreens2App(),
+                    builder: (context) => LoginApp(),
                   ),
                 );
               },

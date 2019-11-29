@@ -19,7 +19,7 @@ class Message {
 
   static Future<List<Message>> browse() async {
     http.Response response =
-        await http.get('http://www.mocky.io/v2/5ddead35310000526c3ae488');
+        await http.get('http://www.mocky.io/v2/5de12b673200009034809269');
 
     await Future.delayed(Duration(seconds: 3));
     String content = response.body;
