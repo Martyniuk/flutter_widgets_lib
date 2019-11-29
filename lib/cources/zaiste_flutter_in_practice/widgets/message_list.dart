@@ -1,11 +1,11 @@
 // Core
 import 'package:flutter/material.dart';
-import 'package:widgetlibrary/cources/zaiste_flutter_in_practice/widgets/compose_button.dart';
-import 'package:widgetlibrary/cources/zaiste_flutter_in_practice/widgets/message_detail.dart';
 
 // Models
 import '../models/message.dart';
-import 'message_compose.dart';
+import 'compose_button.dart';
+import 'message_detail.dart';
+// import 'message_compose.dart';
 
 class MessageList extends StatefulWidget {
   const MessageList({

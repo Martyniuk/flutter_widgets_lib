@@ -8,13 +8,19 @@ class ComposeButton extends StatelessWidget {
     return FloatingActionButton(
       backgroundColor: Theme.of(context).primaryColor,
       child: Icon(Icons.add),
-      onPressed: () {
-        Navigator.push(
+      onPressed: () async {
+        String intention = await Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => MessageCompose(),
           ),
         );
+
+        var snackbar = SnackBar(
+          content: Text('Your message has been sent with $intention'),
+          backgroundColor: Colors.green,
+        );
+        Scaffold.of(context).showSnackBar(snackbar);
       },
     );
   }
