@@ -8,6 +8,9 @@ import 'message_detail.dart';
 // import 'message_compose.dart';
 
 class MessageList extends StatefulWidget {
+  final String status;
+  MessageList({this.status = 'important'});
+
   @override
   _MessageListState createState() => _MessageListState();
 }
@@ -23,7 +26,7 @@ class _MessageListState extends State<MessageList> {
   }
 
   void fetch() async {
-    future = Message.browse();
+    future = Message.browse(status: widget.status);
     messages = await future;
   }
 

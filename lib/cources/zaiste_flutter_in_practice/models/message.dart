@@ -7,7 +7,7 @@ import 'dart:convert';
 // part 'Message.g.dart'; <-- wrong notation...
 part 'message.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable()
 class Message {
   final String body;
   final String subject;
@@ -17,16 +17,18 @@ class Message {
   factory Message.fromJson(Map<String, dynamic> json) =>
       _$MessageFromJson(json);
 
-  static Future<List<Message>> browse() async {
-    http.Response response =
-        await http.get('https://www.mocky.io/v2/5de3727a3000002900e9c9b8');
+  static Future<List<Message>> browse({status = 'important'}) async {
+    String url = status == 'important'
+        ? 'https://www.mocky.io/v2/5de3727a3000002900e9c9b8'
+        : 'https://www.mocky.io/v2/5de3fe4830000051009f78e4';
 
-    await Future.delayed(Duration(seconds: 3));
-    // print('< ---response---- ${response} ======================');
+    http.Response response = await http.get(url);
+
+    await Future.delayed(Duration(seconds: 1));
+
     String content = response.body;
-    // print('< --content----- ${content} ======================');
     List collection = json.decode(content);
-    // print('< --collection----- ${collection} ======================');
+
     List<Message> _messages =
         collection.map((json) => Message.fromJson(json)).toList();
 
