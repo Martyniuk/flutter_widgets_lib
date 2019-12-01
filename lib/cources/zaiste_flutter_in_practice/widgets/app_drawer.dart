@@ -4,8 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 var avatar = 'https://avatars1.githubusercontent.com/u/12961943?s=460&v=4';
 
-class AppDrawer {
-  static Widget getDrawer() {
+class AppDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Drawer(
       child: Column(
         children: <Widget>[
@@ -35,16 +36,14 @@ class AppDrawer {
                 backgroundColor: Colors.white,
                 child: Icon(
                   FontAwesomeIcons.linkedin,
-                  // TODO: find out how to pass context or use Theme in static functions of a class
-                  // color: Theme.of(context).primaryColor,
-                  color: Color.fromRGBO(45, 45, 45, 1.0),
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Icon(
                   FontAwesomeIcons.facebook,
-                  color: Color.fromRGBO(45, 45, 45, 1.0),
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
             ],
