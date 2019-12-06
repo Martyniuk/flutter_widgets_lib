@@ -64,6 +64,7 @@ flutter:
     - assets/images/tattoo_app/
     - assets/images/adidas_app/
     - assets/images/login/
+    - assets/images/streaming_app/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -122,6 +123,12 @@ flutter:
     - family: Social
       fonts:
         - asset: fonts/SocialIcons.ttf
+    - family: Roboto-L
+      fonts:
+        - asset: fonts/Roboto-Light.ttf
+    - family: BackIcon
+      fonts:
+        - asset: fonts/back_icon.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
