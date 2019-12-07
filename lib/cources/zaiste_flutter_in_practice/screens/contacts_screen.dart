@@ -1,6 +1,8 @@
 // Core
 import 'package:flutter/material.dart';
-import 'package:widgetlibrary/cources/zaiste_flutter_in_practice/models/contact.dart';
+import 'package:widgetlibrary/cources/zaiste_flutter_in_practice/widgets/contact_list_builder.dart';
+import '../models/contact.dart';
+import '../widgets/contacts_search_delegate.dart';
 import '../bloc/contacts/contacts_manager.dart';
 
 // Widgets
@@ -19,6 +21,7 @@ class ContactsScreen extends StatelessWidget {
             stream: manager.contactCounter,
             builder: (ctx, snapshot) {
               return Chip(
+                backgroundColor: Colors.red,
                 label: Text(
                   (snapshot.data ?? 0).toString(),
                   style: TextStyle(
@@ -29,41 +32,37 @@ class ContactsScreen extends StatelessWidget {
               );
             },
           ),
+          IconButton(
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: ContactSearchDelegate(manager: manager),
+              );
+            },
+            icon: Icon(Icons.search),
+          ),
           Padding(
             padding: EdgeInsets.only(right: 16.0),
           )
         ],
       ),
       drawer: AppDrawer(),
-      body: StreamBuilder<List<Contact>>(
+      body: ContactListBuilder(
         stream: manager.contactListView,
-        builder: (BuildContext context, AsyncSnapshot<List<Contact>> snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.none:
-            case ConnectionState.waiting:
-            case ConnectionState.active:
-              return Center(child: CircularProgressIndicator());
+        builder: (BuildContext context, List<Contact> contacts) {
+          return ListView.separated(
+            itemCount: contacts?.length ?? 0,
+            itemBuilder: (BuildContext ctx, int index) {
+              Contact _contact = contacts[index];
 
-            case ConnectionState.done:
-              List<Contact> contacts = snapshot.data;
-              if (snapshot.hasError) {
-                return Text('Error has appeared ${snapshot}');
-              }
-
-              return ListView.separated(
-                itemCount: contacts?.length ?? 0,
-                itemBuilder: (BuildContext ctx, int index) {
-                  Contact _contact = contacts[index];
-
-                  return ListTile(
-                    title: Text(_contact.name),
-                    subtitle: Text(_contact.email),
-                    leading: CircleAvatar(),
-                  );
-                },
-                separatorBuilder: (BuildContext ctx, int index) => Divider(),
+              return ListTile(
+                title: Text(_contact.name),
+                subtitle: Text(_contact.email),
+                leading: CircleAvatar(),
               );
-          }
+            },
+            separatorBuilder: (BuildContext ctx, int index) => Divider(),
+          );
         },
       ),
     );
