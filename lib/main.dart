@@ -17,8 +17,9 @@ import 'library/library.dart';
 // import 'practice/basic/travelApp2.dart';
 // import 'practice/basic/story_app.dart';
 // import 'practice/basic/onboarding_screens.dart';
-import 'practice/basic/login_app.dart';
-import 'practice/basic/streaming_app.dart';
+// import 'practice/basic/login_app.dart';
+// import 'practice/basic/streaming_app.dart';
+import 'practice/basic/notes_app.dart';
 // import 'practice/basic/onboarding_screens2.dart';
 // import 'practice/basic/bicycle_app.dart';
 
@@ -106,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => StreamingApp(),
+                    builder: (context) => NotesApp(),
                   ),
                 );
               },

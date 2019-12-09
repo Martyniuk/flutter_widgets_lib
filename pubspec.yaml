@@ -31,6 +31,7 @@ dependencies:
   flutter_flipperkit: ^0.0.20
   flipperkit_http_interceptor:
   dio:
+  rxdart:
   flutter:
     sdk: flutter
 
@@ -65,6 +66,7 @@ flutter:
     - assets/images/adidas_app/
     - assets/images/login/
     - assets/images/streaming_app/
+    - assets/images/notes_app/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

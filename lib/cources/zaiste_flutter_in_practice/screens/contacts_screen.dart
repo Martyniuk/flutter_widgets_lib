@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetlibrary/cources/zaiste_flutter_in_practice/widgets/contact_list_builder.dart';
 import '../models/contact.dart';
+import '../provider.dart';
 import '../widgets/contacts_search_delegate.dart';
 import '../bloc/contacts/contacts_manager.dart';
 
@@ -9,10 +10,12 @@ import '../bloc/contacts/contacts_manager.dart';
 import '../widgets/app_drawer.dart';
 
 class ContactsScreen extends StatelessWidget {
-  ContactManager manager = ContactManager();
+  // ContactManager manager = ContactManager();
 
   @override
   Widget build(BuildContext context) {
+    ContactManager manager = Provider.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Contacts'),
