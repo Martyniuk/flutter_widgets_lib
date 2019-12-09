@@ -1,45 +1,29 @@
 // Core
 import 'package:flutter/material.dart';
-import 'package:widgetlibrary/cources/zaiste_flutter_in_practice/widgets/contact_list_builder.dart';
+
 import '../models/contact.dart';
-import '../provider.dart';
-import '../widgets/contacts_search_delegate.dart';
-import '../bloc/contacts/contacts_manager.dart';
 
 // Widgets
 import '../widgets/app_drawer.dart';
+import '../widgets/contact_counter.dart';
+import '../widgets/contact_list_builder.dart';
+import '../widgets/contacts_search_delegate.dart';
 
 class ContactsScreen extends StatelessWidget {
-  // ContactManager manager = ContactManager();
-
   @override
   Widget build(BuildContext context) {
-    ContactManager manager = Provider.of(context);
+    // ContactManager manager = Provider.of(context);
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Contacts'),
         actions: <Widget>[
-          StreamBuilder<int>(
-            stream: manager.contactCounter,
-            builder: (ctx, snapshot) {
-              return Chip(
-                backgroundColor: Colors.red,
-                label: Text(
-                  (snapshot.data ?? 0).toString(),
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              );
-            },
-          ),
+          ContactCounter(),
           IconButton(
             onPressed: () {
               showSearch(
                 context: context,
-                delegate: ContactSearchDelegate(manager: manager),
+                delegate: ContactSearchDelegate(),
               );
             },
             icon: Icon(Icons.search),
@@ -51,7 +35,6 @@ class ContactsScreen extends StatelessWidget {
       ),
       drawer: AppDrawer(),
       body: ContactListBuilder(
-        stream: manager.contactListView,
         builder: (BuildContext context, List<Contact> contacts) {
           return ListView.separated(
             itemCount: contacts?.length ?? 0,

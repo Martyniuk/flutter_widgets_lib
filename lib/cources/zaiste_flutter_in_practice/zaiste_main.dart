@@ -9,7 +9,7 @@ import 'bloc/contacts/contacts_manager.dart';
 class ZaisteApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider(
+    return Provider<ContactManager>(
       data: ContactManager(),
       child: App(),
     );

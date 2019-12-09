@@ -1,8 +1,11 @@
 // Core
 import 'package:flutter/material.dart';
-import 'package:widgetlibrary/cources/zaiste_flutter_in_practice/bloc/contacts/contacts_manager.dart';
-import 'package:widgetlibrary/cources/zaiste_flutter_in_practice/models/contact.dart';
-import 'package:widgetlibrary/cources/zaiste_flutter_in_practice/widgets/contact_list_builder.dart';
+
+import '../bloc/contacts/contacts_manager.dart';
+import '../models/contact.dart';
+import '../widgets/contact_list_builder.dart';
+
+import '../provider.dart';
 
 class ContactSearchDelegate extends SearchDelegate {
   final ContactManager manager;
@@ -38,6 +41,8 @@ class ContactSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+    // ContactManager manager = Provider.of(context);
+
     if (query.length < 3) {
       return Center(
         child: Text('Please type more than 3 characters for Search.'),
@@ -45,7 +50,7 @@ class ContactSearchDelegate extends SearchDelegate {
     }
 
     return ContactListBuilder(
-      stream: manager.filteredCollection(query: query),
+      // stream: manager.filteredCollection(query: query),
       builder: (BuildContext context, contacts) {
         return ListView.separated(
           itemCount: contacts?.length ?? 0,

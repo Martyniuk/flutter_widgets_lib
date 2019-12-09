@@ -1,14 +1,16 @@
 // -- BLOC for Contacts
 import 'dart:async';
+import 'package:rxdart/rxdart.dart';
 
 import '../../service/contact_service.dart';
-
 import '../../models/contact.dart';
 
 class ContactManager {
   // Stream<List<Contact>> get contactListView async* {
   //   yield await ContactService.browse();
   // }
+  final BehaviorSubject<int> _contactCounter = BehaviorSubject<int>();
+
   Stream<List<Contact>> get contactListView {
     return Stream.fromFuture(ContactService.browse());
   }
@@ -17,11 +19,13 @@ class ContactManager {
     return Stream.fromFuture(ContactService.browse(query: query));
   }
 
-  StreamController<int> _contactCounter = StreamController<int>();
-
   Stream<int> get contactCounter => _contactCounter.stream;
 
   ContactManager() {
     contactListView.listen((list) => _contactCounter.add(list.length));
+  }
+
+  void dispose() {
+    _contactCounter.close();
   }
 }
