@@ -30,6 +30,8 @@ dependencies:
   flutter_slidable: ^0.5.4
   dio:
   rxdart:
+  built_collection:
+  built_value:
   flutter:
     sdk: flutter
 
@@ -41,6 +43,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner:
+  built_value_generator:
   json_serializable:
 
 # For information on the generic Dart part of this file, see the

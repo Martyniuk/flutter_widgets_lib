@@ -18,7 +18,7 @@ import 'library/library.dart';
 // import 'practice/basic/onboarding_screens.dart';
 // import 'practice/basic/login_app.dart';
 // import 'practice/basic/streaming_app.dart';
-import 'practice/basic/notes_app.dart';
+// import 'practice/basic/notes_app.dart';
 import 'practice/basic/menu_options.dart';
 // import 'practice/basic/onboarding_screens2.dart';
 // import 'practice/basic/bicycle_app.dart';
@@ -28,6 +28,7 @@ import 'practice/basic/menu_options.dart';
 import 'practice/medium/save_animals/save_animals.dart';
 import 'practice/basic/adidas_app.dart';
 import 'cources/zaiste_flutter_in_practice/zaiste_main.dart';
+import 'flutter_boring_show/main_flutter_boring_show.dart';
 // import 'practice/medium/tattoo/tattoo_app.dart';
 
 void main() {
@@ -73,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             ListTile(
-              title: Text('Library'),
+              title: Text('Experiments Library'),
               onTap: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => Library()));
@@ -103,12 +104,12 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: Text('Adidas'),
+              title: Text('Flutter Boring Show (experiments)'),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AdidasApp(),
+                    builder: (context) => FlutterBoringShowMain(),
                   ),
                 );
               },
