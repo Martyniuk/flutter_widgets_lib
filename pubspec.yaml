@@ -32,6 +32,7 @@ dependencies:
   rxdart:
   built_collection:
   built_value:
+  vector_math: any
   flutter:
     sdk: flutter
 

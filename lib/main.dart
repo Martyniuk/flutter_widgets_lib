@@ -22,11 +22,12 @@ import 'library/library.dart';
 import 'practice/basic/menu_options.dart';
 // import 'practice/basic/onboarding_screens2.dart';
 // import 'practice/basic/bicycle_app.dart';
+// import 'practice/basic/adidas_app.dart';
 
 // Advanced layouts
 // import 'practice/medium/travel_ui/travel_ui.dart';
 import 'practice/medium/save_animals/save_animals.dart';
-import 'practice/basic/adidas_app.dart';
+import 'practice/medium/alarm_clock/alarm_clock.dart';
 import 'cources/zaiste_flutter_in_practice/zaiste_main.dart';
 import 'flutter_boring_show/main_flutter_boring_show.dart';
 // import 'practice/medium/tattoo/tattoo_app.dart';
@@ -98,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SaveAnimals(),
+                    builder: (context) => AlarmApp(),
                   ),
                 );
               },
