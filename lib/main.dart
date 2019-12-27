@@ -23,11 +23,14 @@ import 'practice/basic/menu_options.dart';
 // import 'practice/basic/onboarding_screens2.dart';
 // import 'practice/basic/bicycle_app.dart';
 // import 'practice/basic/adidas_app.dart';
+import 'screens/beginner_difficulty_apps.dart';
+import 'screens/maximilian_course_apps.dart';
 
 // Advanced layouts
 // import 'practice/medium/travel_ui/travel_ui.dart';
 import 'practice/medium/save_animals/save_animals.dart';
 import 'practice/medium/alarm_clock/alarm_clock.dart';
+
 import 'cources/zaiste_flutter_in_practice/zaiste_main.dart';
 import 'flutter_boring_show/main_flutter_boring_show.dart';
 // import 'practice/medium/tattoo/tattoo_app.dart';
@@ -42,8 +45,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
+      routes: {
+        BeginnerDifficultyApps.routeName: (BuildContext context) =>
+            BeginnerDifficultyApps(),
+        MaximilianCourseApps.routeName: (BuildContext context) =>
+            MaximilianCourseApps(),
+      },
       theme: ThemeData(
         primaryColor: Color.fromRGBO(45, 45, 45, 1.0),
+        accentColor: Color(0xff65d1ba),
       ),
     );
   }
@@ -63,6 +73,18 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
+              currentAccountPicture: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50.0),
+                  border: Border.all(
+                    width: 2.0,
+                    color: Colors.white,
+                  ),
+                ),
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/me_bald.jpg'),
+                ),
+              ),
               accountName: Text(
                 "Vladimir Martyniuk",
                 style: TextStyle(fontSize: 22.0, letterSpacing: .5),
@@ -77,25 +99,22 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               title: Text('Experiments Library'),
               onTap: () {
+                Navigator.pop(context);
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => Library()));
               },
             ),
             ListTile(
-              title: Text('Basic'),
-              // TODO: should be a screen with all apps from basic folder
+              title: Text('Beginner'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MenuOptions(),
-                  ),
-                );
+                Navigator.pop(context);
+                Navigator.pushNamed(context, BeginnerDifficultyApps.routeName);
               },
             ),
             ListTile(
               title: Text('Medium'),
               onTap: () {
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -107,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               title: Text('Flutter Boring Show (experiments)'),
               onTap: () {
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -118,12 +138,20 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               title: Text('Course - Zaiste'),
               onTap: () {
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => ZaisteApp(),
                   ),
                 );
+              },
+            ),
+            ListTile(
+              title: Text('Course - Maximilian'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, MaximilianCourseApps.routeName);
               },
             ),
           ],
@@ -133,9 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       drawer: _drawDrawer(),
-      appBar: AppBar(
-        title: Text('AppBar'),
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

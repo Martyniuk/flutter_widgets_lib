@@ -69,6 +69,7 @@ flutter:
     - assets/images/login/
     - assets/images/streaming_app/
     - assets/images/notes_app/
+    - assets/images/me_bald.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
