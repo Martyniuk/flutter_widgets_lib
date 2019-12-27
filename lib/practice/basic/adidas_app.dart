@@ -57,7 +57,9 @@ class _AdidasAppState extends State<AdidasApp> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back,
                 color: Colors.white, size: screenAwareSize(20.0, context)),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           title: Text(
             'Energy Cloud',
