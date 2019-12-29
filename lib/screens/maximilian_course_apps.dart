@@ -7,6 +7,7 @@ import '../widgets/bullet.dart';
 // Course
 import '../cources/maximilian_course/basics_quiz_app/quiz_app.dart';
 import '../cources/maximilian_course/first_assignment/first_assignment_main.dart';
+import '../cources/maximilian_course/expense_planner/expense_planner_main.dart';
 
 var data = [
   {
@@ -21,7 +22,15 @@ var data = [
       'State practice',
       'Widget separatation',
     ],
-  }
+  },
+  {
+    'appLayout': ExpensePlanner(),
+    'title': 'Expense Planner',
+    'details': [
+      'Widgets combination',
+      'Card && ',
+    ],
+  },
 ];
 
 class MaximilianCourseApps extends StatelessWidget {
