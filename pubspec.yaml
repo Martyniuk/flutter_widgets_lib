@@ -69,6 +69,7 @@ flutter:
     - assets/images/login/
     - assets/images/streaming_app/
     - assets/images/notes_app/
+    - assets/images/maximilian_course/
     - assets/images/me_bald.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -134,6 +135,18 @@ flutter:
     - family: BackIcon
       fonts:
         - asset: fonts/back_icon.ttf
+    - family: OpenSans
+      fonts:
+        - asset: fonts/OpenSans-Regular.ttf
+        - asset: fonts/OpenSans-Bold.ttf
+          weight: 700
+    - family: Quicksand
+      fonts:
+        - asset: fonts/Quicksand-Regular.ttf
+        - asset: fonts/Quicksand-Bold.ttf
+          weight: 700
+        - asset: fonts/Quicksand-Light.ttf
+        - asset: fonts/Quicksand-Medium.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

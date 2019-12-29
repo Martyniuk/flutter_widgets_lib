@@ -1,64 +1,137 @@
 // Core
 import 'package:flutter/material.dart';
 
-// Model
-import './transaction.dart';
+// Models
+import 'models/transaction.dart';
+
+// Widgets
+import 'widgets/new_transaction.dart';
+import 'widgets/chart.dart';
+import 'widgets/transaction_list.dart';
 
 class ExpensePlanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+        accentColor: Colors.amber,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              title: TextStyle(
+                fontFamily: 'OpenSans',
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                title: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+        ),
+      ),
       home: HomePage(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  final List<Transaction> transactions = [
-    Transaction(
-      id: '1',
-      title: 'new Shoes',
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '2',
-      title: 'new Second Transaction',
-      amount: 59.99,
-      date: DateTime.now(),
-    )
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List<Transaction> _userTransactions = [
+    // Transaction(
+    //   id: '1',
+    //   title: 'new Shoes',
+    //   amount: 69.99,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: '2',
+    //   title: 'new Second Transaction',
+    //   amount: 59.99,
+    //   date: DateTime.now(),
+    // )
   ];
+
+  List<Transaction> get _recentTransactions {
+    return _userTransactions.where((tx) {
+      final sevenDaysBefore = DateTime.now().subtract(Duration(days: 7));
+
+      return tx.date.isAfter(sevenDaysBefore);
+    }).toList();
+  }
+
+  void _addNewTransaction(String title, double amount) {
+    final Transaction transaction = Transaction(
+      id: _userTransactions.length.toString(),
+      title: title,
+      amount: amount,
+      date: DateTime.now(),
+    );
+
+    print(transaction);
+    setState(() {
+      _userTransactions.add(transaction);
+    });
+  }
+
+  void _startAddNewTransaction(BuildContext ctx) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (bCtx) {
+        return GestureDetector(
+          onTap: () {},
+          behavior: HitTestBehavior.opaque,
+          child: NewTransaction(
+            addTransaction: _addNewTransaction,
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Expense Planner')),
-      body: Container(
+      appBar: AppBar(
+        title: Text(
+          'Expense Planner',
+          style: TextStyle(fontFamily: 'OpenSans'),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () => _startAddNewTransaction(context),
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
               width: double.infinity,
               child: Card(
                 elevation: 5.0,
-                child: Center(
-                  child: Text(
-                    'Chart!',
-                  ),
-                ),
+                child: Chart(recentTransactions: _recentTransactions),
               ),
             ),
-            Text(
-              'Chart! _ 2',
-            ),
-            Column(
-              children: transactions.map((Transaction tx) {
-                return Card(
-                  child: Text(tx.title),
-                );
-              }).toList(),
+            TransactionList(
+              transactions: _userTransactions,
             ),
           ],
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => _startAddNewTransaction(context),
       ),
     );
   }
