@@ -1,7 +1,6 @@
 // Core
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // Library of widgets I play with
 import 'library/library.dart';
@@ -26,6 +25,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Below code disables orientation change on device.
+    // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
