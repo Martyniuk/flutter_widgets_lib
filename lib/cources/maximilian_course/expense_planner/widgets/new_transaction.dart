@@ -1,6 +1,12 @@
 // Core
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+// Widgets
+import 'adaptive_flat_button.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTransaction;
@@ -64,21 +70,35 @@ class _NewTransactionState extends State<NewTransaction> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            TextField(
-              controller: _titleController,
-              decoration: InputDecoration(
-                labelText: 'Title',
-              ),
-              onSubmitted: (String _) => _submitData(),
-            ),
-            TextField(
-              controller: _amountController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              onSubmitted: (String _) => _submitData(),
-              decoration: InputDecoration(
-                labelText: 'Amount',
-              ),
-            ),
+            Platform.isIOS
+                ? CupertinoTextField(
+                    controller: _titleController,
+                    placeholder: 'Title',
+                    onSubmitted: (String _) => _submitData(),
+                  )
+                : TextField(
+                    controller: _titleController,
+                    decoration: InputDecoration(
+                      labelText: 'Title',
+                    ),
+                    onSubmitted: (String _) => _submitData(),
+                  ),
+            Platform.isIOS ? SizedBox(height: 20.0) : Container(),
+            Platform.isIOS
+                ? CupertinoTextField(
+                    controller: _titleController,
+                    placeholder: 'Amount',
+                    onSubmitted: (String _) => _submitData(),
+                  )
+                : TextField(
+                    controller: _amountController,
+                    keyboardType:
+                        TextInputType.numberWithOptions(decimal: true),
+                    onSubmitted: (String _) => _submitData(),
+                    decoration: InputDecoration(
+                      labelText: 'Amount',
+                    ),
+                  ),
             SizedBox(height: 20.0),
             Container(
               height: 70.0,
@@ -89,33 +109,41 @@ class _NewTransactionState extends State<NewTransaction> {
                         ? 'No Date Chosen! yet.'
                         : DateFormat.yMd().format(_selectedDate)),
                   ),
-                  FlatButton(
-                    child: Text(
-                      'Chose Date',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    textColor: Theme.of(context).primaryColor,
-                    onPressed: () {
-                      _presentDatePicker();
-                    },
+                  AdaptiveFlatButton(
+                    text: 'Chose date',
+                    handler: _presentDatePicker,
                   ),
                 ],
               ),
             ),
             Spacer(),
-            RaisedButton(
-              onPressed: _submitData,
-              textColor: Theme.of(context).textTheme.button.color,
-              color: Theme.of(context).primaryColor,
-              child: Text(
-                'Add Transcation',
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
+            Platform.isIOS
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 30.0),
+                    child: CupertinoButton(
+                      color: Theme.of(context).primaryColor,
+                      onPressed: () {
+                        _presentDatePicker();
+                      },
+                      child: Text(
+                        'Add Transcation',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  )
+                : RaisedButton(
+                    onPressed: _submitData,
+                    textColor: Theme.of(context).textTheme.button.color,
+                    color: Theme.of(context).primaryColor,
+                    child: Text(
+                      'Add Transcation',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
           ],
         ),
       ),
