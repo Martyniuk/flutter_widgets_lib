@@ -8,6 +8,7 @@ import '../widgets/bullet.dart';
 import '../cources/maximilian_course/basics_quiz_app/quiz_app.dart';
 import '../cources/maximilian_course/first_assignment/first_assignment_main.dart';
 import '../cources/maximilian_course/expense_planner/expense_planner_main.dart';
+import '../cources/maximilian_course/meals_app/meals_app_main.dart';
 
 var data = [
   {
@@ -31,6 +32,14 @@ var data = [
       'Card && ',
     ],
   },
+  {
+    'appLayout': MealsApp(),
+    'title': 'Meals App',
+    'details': [
+      'Navigation',
+      'Passing data to Screens',
+    ]
+  }
 ];
 
 class MaximilianCourseApps extends StatelessWidget {
@@ -140,7 +149,7 @@ class MaximilianCourseApps extends StatelessWidget {
       appBar: AppBar(
         title: Text('Maximilian Apps we build thru Course'),
       ),
-      body: Column(
+      body: ListView(
         children: cards,
       ),
     );

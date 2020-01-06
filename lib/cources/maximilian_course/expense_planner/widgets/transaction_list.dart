@@ -36,7 +36,7 @@ class TransactionList extends StatelessWidget {
             itemCount: transactions.length,
             itemBuilder: (ctx, index) {
               Transaction transaction = transactions[index];
-              // children vs builder approach
+              // children vs builder(-) approach
               return TransactionItem(
                 key: ValueKey(transaction.id),
                 transaction: transaction,
