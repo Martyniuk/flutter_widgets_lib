@@ -11,16 +11,63 @@ import 'adaptive_flat_button.dart';
 class NewTransaction extends StatefulWidget {
   final Function addTransaction;
 
-  NewTransaction({this.addTransaction});
+  NewTransaction({this.addTransaction}) {
+    print('<-- Constructor NewTransaction');
+  }
 
   @override
-  _NewTransactionState createState() => _NewTransactionState();
+  _NewTransactionState createState() {
+    print('<--- Create State of _NewTransactionState');
+    return _NewTransactionState();
+  }
 }
 
 class _NewTransactionState extends State<NewTransaction> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime _selectedDate;
+
+  _NewTransactionState() {
+    bool mounted = this.mounted;
+    print('<--- Constructor _NewTransactionState -- mounted $mounted');
+    print('<-- Constructor _NewTransactionState ---- STATE class');
+  }
+
+  @override
+  void initState() {
+    print('<---- initState of _NewTransactionState');
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(NewTransaction oldWidget) {
+    print('<----- didUpdateWidget of _NewTransactionState');
+    print('<----- actual oldWidget ${oldWidget.toString()}');
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    bool mounted = this.mounted;
+    print('<=== deactivate of _NewTransactionState');
+    print('<--- deactivate _NewTransactionState -- mounted $mounted');
+    super.deactivate();
+  }
+
+  @override
+  void didChangeDependencies() {
+    print('< ===== didChangeDependencies of _NewTransactionState');
+    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    bool mounted = this.mounted;
+    print('<----- dispose of _NewTransactionState');
+    print('<--- dospose _NewTransactionState -- mounted $mounted');
+    super.dispose();
+  }
 
   void _submitData() {
     if (_amountController.text.isEmpty) {
@@ -58,6 +105,9 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
+    bool mounted = this.mounted;
+    print('<--- build _NewTransactionState -- mounted $mounted');
+    print('<---- BUILD of _NewTransactionState');
     return Card(
       elevation: 5,
       child: Container(
@@ -86,7 +136,7 @@ class _NewTransactionState extends State<NewTransaction> {
             Platform.isIOS ? SizedBox(height: 20.0) : Container(),
             Platform.isIOS
                 ? CupertinoTextField(
-                    controller: _titleController,
+                    controller: _amountController,
                     placeholder: 'Amount',
                     onSubmitted: (String _) => _submitData(),
                   )
@@ -123,7 +173,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     child: CupertinoButton(
                       color: Theme.of(context).primaryColor,
                       onPressed: () {
-                        _presentDatePicker();
+                        _submitData();
                       },
                       child: Text(
                         'Add Transcation',
