@@ -2,17 +2,18 @@
 import 'package:flutter/material.dart';
 
 // Widgets
-import 'category_item.dart';
+import '../widgets/category_item.dart';
 
 // Dummy_data
-import './dummy_data/dummy_data.dart';
+import '../dummy_data/dummy_data.dart';
 
 // Models
-import 'models/category.dart';
+import '../models/category.dart';
 
 class CategoriesScreen extends StatelessWidget {
+  static const String routeName = '/';
   List<Widget> renderCategories = DUMMY_CATEGORIES.map((Category category) {
-    return CategoryItem(category.title, category.color);
+    return CategoryItem(category.id, category.title, category.color);
   }).toList();
 
   @override

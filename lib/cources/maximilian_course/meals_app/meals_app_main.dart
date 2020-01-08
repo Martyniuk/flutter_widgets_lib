@@ -2,7 +2,9 @@
 import 'package:flutter/material.dart';
 
 // Screens
-import 'categories_screen.dart';
+import './screens/categories_screen.dart';
+import './screens/category_meals_screen.dart';
+import './screens/meal_detail_screen.dart';
 
 class MealsApp extends StatelessWidget {
   @override
@@ -28,18 +30,25 @@ class MealsApp extends StatelessWidget {
               ),
             ),
       ),
-      home: CategoriesScreen(),
+      routes: {
+        CategoriesScreen.routeName: (ctx) => CategoriesScreen(), // '/'
+        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+      },
+      // onGenerateRoute: (settings) {
+      //   // <----- EXAMPLE OF POSSIBLE HANDLING IS BELOW ---->
+      //   // switch (settings.name) {
+      //   //   case '/some_route':
+      //   //     return ...;
+      //   //   case '/some_other_route':
+      //   //     return ...;
+      //   // }
+      //   print(settings.arguments);
+      //   return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
+      // },
+      onUnknownRoute: (settings) =>
+          // 404 page fallback
+          MaterialPageRoute(builder: (ctx) => CategoriesScreen()),
     );
   }
 }
-
-// class HomePage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Container(
-//         child: Text('hello'),
-//       ),
-//     );
-//   }
-// }
