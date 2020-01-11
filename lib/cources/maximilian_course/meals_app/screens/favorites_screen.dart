@@ -1,14 +1,37 @@
 // Core
 import 'package:flutter/material.dart';
+// Models
+import '../models/meal.dart';
+// Widgets
+import '../widgets/meal_item.dart';
 
-class FavoritesScreen extends StatefulWidget {
-  @override
-  _FavoritesScreenState createState() => _FavoritesScreenState();
-}
+class FavoritesScreen extends StatelessWidget {
+  final List<Meal> favoriteMeals;
 
-class _FavoritesScreenState extends State<FavoritesScreen> {
+  FavoritesScreen(this.favoriteMeals);
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    if (favoriteMeals.isEmpty) {
+      return Center(
+        child: Text('You have no favorites yet - start adding some! =)'),
+      );
+    }
+
+    return ListView.builder(
+      itemBuilder: (ctx, index) {
+        Meal meal = favoriteMeals[index];
+
+        return MealItem(
+          id: meal.id,
+          title: meal.title,
+          imageUrl: meal.imageUrl,
+          affordability: meal.affordability,
+          complexity: meal.complexity,
+          duration: meal.duration,
+        );
+      },
+      itemCount: favoriteMeals.length,
+    );
   }
 }

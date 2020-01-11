@@ -34,7 +34,7 @@ class _TabsScreenState extends State<TabsScreen> {
         body: TabBarView(
           children: <Widget>[
             CategoriesScreen(),
-            FavoritesScreen(),
+            // FavoritesScreen(), // commented due to arguments change but this screen exists for studing purpose
           ],
         ),
       ),

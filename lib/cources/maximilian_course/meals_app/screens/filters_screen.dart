@@ -5,6 +5,10 @@ import '../widgets/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   static const String routeName = '/filters_screen';
+  final Function setFilters;
+  final Map<String, bool> currentFilters;
+
+  FiltersScreen(this.currentFilters, this.setFilters);
 
   @override
   _FiltersScreenState createState() => _FiltersScreenState();
@@ -16,14 +20,26 @@ class _FiltersScreenState extends State<FiltersScreen> {
   bool _vegan = false;
   bool _lactoseFree = false;
 
-  Widget _buildSwitchTile(String title, String description, bool currentValue,
-      Function onChangedHandler) {
+  @override
+  void initState() {
+    _glutenFree = widget.currentFilters['gluten'];
+    _lactoseFree = widget.currentFilters['lactose'];
+    _vegetarian = widget.currentFilters['vegetarian'];
+    _vegan = widget.currentFilters['vegan'];
+
+    super.initState();
+  }
+
+  Widget _buildSwitchTile(
+    String title,
+    String description,
+    bool currentValue,
+    Function onChangedHandler,
+  ) {
     return SwitchListTile.adaptive(
       title: Text(title),
       subtitle: Text(description),
-      onChanged: (bool value) {
-        onChangedHandler(value);
-      },
+      onChanged: onChangedHandler,
       value: currentValue,
     );
   }
@@ -55,7 +71,24 @@ class _FiltersScreenState extends State<FiltersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Filters')),
+      appBar: AppBar(
+        title: Text('Filters'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.save),
+            onPressed: () {
+              final selectedFilters = {
+                'gluten': _glutenFree,
+                'lactose': _lactoseFree,
+                'vegan': _vegan,
+                'vegetarian': _vegetarian,
+              };
+
+              widget.setFilters(selectedFilters);
+            },
+          ),
+        ],
+      ),
       drawer: MainDrawer(),
       body: Column(
         children: <Widget>[
