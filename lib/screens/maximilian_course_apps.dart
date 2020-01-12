@@ -9,6 +9,7 @@ import '../cources/maximilian_course/basics_quiz_app/quiz_app.dart';
 import '../cources/maximilian_course/first_assignment/first_assignment_main.dart';
 import '../cources/maximilian_course/expense_planner/expense_planner_main.dart';
 import '../cources/maximilian_course/meals_app/meals_app_main.dart';
+import '../cources/maximilian_course/shop_app/shop_app_main.dart';
 
 var data = [
   {
@@ -36,11 +37,19 @@ var data = [
     'appLayout': MealsApp(),
     'title': 'Meals App',
     'details': [
-      'Navigation',
+      'Navigation - Routes, NamedRoutes',
       'Passing data to Screens',
+      'Drawer, BottomTabBar & AppBar - bottom TabBar',
+    ]
+  },
+  {
+    'appLayout': ShopApp(),
+    'title': 'Shop App',
+    'details': [
+      'State Management - Provider',
     ]
   }
-];
+].reversed;
 
 class MaximilianCourseApps extends StatelessWidget {
   static String routeName = '/maximilian_course_apps';
