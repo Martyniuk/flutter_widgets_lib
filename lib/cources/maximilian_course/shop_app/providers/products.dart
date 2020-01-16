@@ -1,16 +1,10 @@
 // Core
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+//Models
+import 'product.dart';
 
-// Screnns
-import 'screens/products_overview_screen.dart';
-import 'screens/product_detail_screen.dart';
-// Provider
-import 'providers/product.dart';
-import './providers/products.dart';
-
-class ShopApp extends StatelessWidget {
-  final List<Product> loadedProducts = [
+class Products with ChangeNotifier {
+  final List<Product> _items = [
     Product(
       id: 'p1',
       title: 'Red Shirt',
@@ -45,23 +39,31 @@ class ShopApp extends StatelessWidget {
     ),
   ];
 
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: Products(),
-      // builder: (ctx) => Products(),
-      child: MaterialApp(
-        title: 'DeliMeals',
-        theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.deepOrange,
-          fontFamily: 'Lato',
-        ),
-        home: ProductOverviewScreen(),
-        routes: {
-          ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
-        },
-      ),
-    );
+  List<Product> get items {
+    return [..._items];
   }
+
+  List<Product> get favoriteItems {
+    return _items.where((item) => item.isFavorite).toList();
+  }
+
+  Product fintById(String id) {
+    return _items.firstWhere((prod) => prod.id == id);
+  }
+
+  void addProduct(value) {
+    _items.add(value);
+
+    notifyListeners();
+  }
+
+  // void showFavoritesOnly() {
+  //   _showFavoritesOnly = true;
+  //   notifyListeners();
+  // }
+
+  // void showAll() {
+  //   _showFavoritesOnly = false;
+  //   notifyListeners();
+  // }
 }
