@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // Providers
 import '../providers/product.dart';
-
+import '../providers/cart.dart';
 // Screens
 import '../screens/product_detail_screen.dart';
 
@@ -14,7 +14,7 @@ class ProductItem extends StatelessWidget {
       context,
       listen: false,
     ); // 1 - first approach
-    print('<---- ProductItem ');
+    final Cart cart = Provider.of<Cart>(context, listen: false);
     return ClipRRect(
       borderRadius: BorderRadius.circular(12.0),
       child: GridTile(
@@ -29,7 +29,6 @@ class ProductItem extends StatelessWidget {
           leading: IconButton(
             icon: Consumer<Product>(
               builder: (ctx, product, child) {
-                print('<---- ProductItem IconButton ${product.isFavorite}');
                 return Icon(
                   product.isFavorite ? Icons.favorite : Icons.favorite_border,
                 );
@@ -49,7 +48,9 @@ class ProductItem extends StatelessWidget {
           trailing: IconButton(
             icon: Icon(Icons.shopping_cart),
             color: Theme.of(context).accentColor,
-            onPressed: () {},
+            onPressed: () {
+              cart.addItem(product.id, product.price, product.title);
+            },
           ),
         ),
       ),

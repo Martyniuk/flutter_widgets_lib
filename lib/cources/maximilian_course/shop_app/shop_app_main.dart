@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // Screnns
+import 'screens/cart_screen.dart';
 import 'screens/products_overview_screen.dart';
 import 'screens/product_detail_screen.dart';
+import 'screens/orders_screen.dart';
 // Provider
+import 'providers/cart.dart';
 import 'providers/product.dart';
 import './providers/products.dart';
+import './providers/orders.dart';
 
 class ShopApp extends StatelessWidget {
   final List<Product> loadedProducts = [
@@ -47,11 +51,21 @@ class ShopApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: Products(),
-      // builder: (ctx) => Products(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: Products(),
+        ),
+        ChangeNotifierProvider.value(
+          value: Cart(),
+        ),
+        ChangeNotifierProvider.value(
+          value: Orders(),
+        ),
+      ],
       child: MaterialApp(
         title: 'DeliMeals',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.purple,
           accentColor: Colors.deepOrange,
@@ -60,6 +74,8 @@ class ShopApp extends StatelessWidget {
         home: ProductOverviewScreen(),
         routes: {
           ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+          CartScreen.routeName: (cts) => CartScreen(),
+          OrdersScreen.routeName: (ctx) => OrdersScreen(),
         },
       ),
     );
