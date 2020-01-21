@@ -10,7 +10,7 @@ import 'screens/maximilian_course_apps.dart';
 
 // Advanced layouts
 // import 'practice/medium/travel_ui/travel_ui.dart';
-import 'practice/medium/save_animals/save_animals.dart';
+// import 'practice/medium/save_animals/save_animals.dart';
 import 'practice/medium/alarm_clock/alarm_clock.dart';
 
 import 'cources/zaiste_flutter_in_practice/zaiste_main.dart';
@@ -67,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 child: CircleAvatar(
+                  radius: 32,
                   backgroundImage: AssetImage('assets/images/me_bald.jpg'),
                 ),
               ),
