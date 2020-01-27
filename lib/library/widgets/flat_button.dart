@@ -13,7 +13,7 @@ class _FlatButtonState extends State<FlatButtonCustom> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height * 0.7,
       decoration: BoxDecoration(
         border: Border.all(
           width: 4.0,
@@ -29,7 +29,19 @@ class _FlatButtonState extends State<FlatButtonCustom> {
             thickness: 3.0,
           ),
           Column(
-            children: <Widget>[],
+            children: <Widget>[
+              FlatButton(
+                onPressed: () {},
+                highlightColor: Colors.red,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Text('Children 1'),
+                    Text('Children 2'),
+                  ],
+                ),
+              ),
+            ],
           )
         ],
       ),

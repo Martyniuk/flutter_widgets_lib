@@ -20,7 +20,7 @@ var data = [
   CenterCustom(),
   CardCustom(),
   FlatButtonCustom(),
-  ListTileCustom()
+  ListTileCustom(),
 ];
 
 class Library extends StatefulWidget {
@@ -49,7 +49,7 @@ class _LibraryState extends State<Library> {
           itemCount: data.length,
           itemBuilder: (BuildContext context, int index) {
             Widget customWidget = data[index];
-
+            print('customWidget $index');
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(

@@ -6,6 +6,7 @@ import 'library/library.dart';
 
 // Screens
 import 'screens/beginner_difficulty_apps.dart';
+import 'screens/book_succinctly_screen.dart';
 import 'screens/maximilian_course_apps.dart';
 
 // Advanced layouts
@@ -88,6 +89,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.pop(context);
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => Library()));
+              },
+            ),
+            ListTile(
+              title: Text('Book - Succinctly'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => BookSuccinctlyScreen()));
               },
             ),
             ListTile(
