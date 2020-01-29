@@ -42,6 +42,10 @@ class _EditProductScreenState extends State<EditProductScreen> {
   }
 
   void _saveForm() {
+    final isValide = _form.currentState.validate();
+    if (!isValide) {
+      return;
+    }
     _form.currentState.save();
   }
 
@@ -63,7 +67,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
         title: Text('Edit Product'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.add),
+            icon: Icon(Icons.save),
             onPressed: _saveForm,
           ),
         ],
@@ -81,6 +85,15 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 textInputAction: TextInputAction.next,
                 onFieldSubmitted: (value) {
                   FocusScope.of(context).requestFocus(_priceFocusNode);
+                },
+                validator: (String value) {
+                  if (value.isEmpty) {
+                    return 'Title value is can not be Empty!';
+                  }
+                  // validate String value
+                  // - if return string - this string will be treated as Error message
+                  // - if return null - no error to show(it means validation passed)
+                  return null;
                 },
                 onSaved: (value) {
                   _editedProduct = Product(
@@ -101,6 +114,20 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 focusNode: _priceFocusNode,
                 onFieldSubmitted: (value) {
                   FocusScope.of(context).requestFocus(_descriptionFocusNode);
+                },
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Value should Not be Empty!';
+                  }
+                  // double.tryParse(value) == null <-- should validate if this is double value
+                  // double.parse(value) <= 0 <-- greater then 0
+                  RegExp _numeric = new RegExp(r'^-?[0-9]+$');
+                  bool isValid = _numeric.hasMatch(value);
+                  if (isValid) {
+                    return null;
+                  } else {
+                    return 'Value should be a Number!';
+                  }
                 },
                 onSaved: (value) {
                   _editedProduct = Product(
