@@ -57,6 +57,17 @@ class Products with ChangeNotifier {
     notifyListeners();
   }
 
+  void deleteProduct(String id) {
+    Product proper = _items.firstWhere((Product p) {
+      return p.id == id;
+    });
+    print('deleteProduct ${proper.title}');
+
+    _items.remove(proper);
+
+    notifyListeners();
+  }
+
   // void showFavoritesOnly() {
   //   _showFavoritesOnly = true;
   //   notifyListeners();

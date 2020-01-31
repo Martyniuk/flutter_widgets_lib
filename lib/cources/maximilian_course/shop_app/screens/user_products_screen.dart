@@ -16,7 +16,7 @@ class UserProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
-
+    print('prodicts data length ${productsData.items.length}');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Products'),
@@ -39,7 +39,7 @@ class UserProductsScreen extends StatelessWidget {
 
             return Column(
               children: <Widget>[
-                UserProductItem(product.title, product.imageUrl),
+                UserProductItem(product.id, product.title, product.imageUrl),
                 Divider(),
               ],
             );
