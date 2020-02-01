@@ -47,7 +47,7 @@ class Products with ChangeNotifier {
     return _items.where((item) => item.isFavorite).toList();
   }
 
-  Product fintById(String id) {
+  Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }
 
@@ -57,13 +57,23 @@ class Products with ChangeNotifier {
     notifyListeners();
   }
 
-  void deleteProduct(String id) {
-    Product proper = _items.firstWhere((Product p) {
-      return p.id == id;
-    });
-    print('deleteProduct ${proper.title}');
+  void updateProduct(String id, Product update) {
+    final prodIndex = _items.indexWhere((prod) => prod.id == id);
+    if (prodIndex >= 0) {
+      _items[prodIndex] = update;
+      notifyListeners();
+    } else {
+      print('<---- no update');
+    }
+  }
 
-    _items.remove(proper);
+  void deleteProduct(String id) {
+    _items.removeWhere((prod) => prod.id == id);
+    // Product proper = _items.firstWhere((Product p) {
+    //   return p.id == id;
+    // });
+
+    // _items.remove(proper);
 
     notifyListeners();
   }
