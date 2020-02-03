@@ -1,5 +1,8 @@
 // Core
+import 'dart:convert';
+// -------------------
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 //Models
 import 'product.dart';
 
@@ -51,10 +54,41 @@ class Products with ChangeNotifier {
     return _items.firstWhere((prod) => prod.id == id);
   }
 
-  void addProduct(value) {
-    _items.add(value);
+  Future<void> addProduct(value) async {
+    const url = 'https://maximilianshopapp.firebaseio.com/products.json';
+    try {
+      final response = await http.post(
+        url,
+        body: json.encode({
+          'title': value.title,
+          'description': value.description,
+          'imageUrl': value.imageUrl,
+          'price': value.price,
+          'isFavorite': value.isFavorite,
+        }),
+      );
 
-    notifyListeners();
+      final newProduct = Product(
+        title: value.title,
+        description: value.description,
+        price: value.price,
+        imageUrl: value.imageUrl,
+        id: json.decode(response.body)['name'],
+      );
+
+      _items.add(newProduct);
+
+      notifyListeners();
+    } catch (error) {
+      throw error;
+    }
+
+    //     .then((response) {
+    //   print('response -- $response');
+    // }).catchError((error) {
+    //   print('<----- ERROR $error');
+    //   throw error;
+    // });
   }
 
   void updateProduct(String id, Product update) {
